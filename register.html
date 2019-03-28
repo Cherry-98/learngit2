@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>register</title>
+    <style>
+        body,p,input{
+		margin:0;
+		padding: 0;
+	}
+		#registerContain{
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			background: rgba(0,0,0,0.7);
+		}
+		.register{
+			width: 300px;
+			height: 350px;
+			background: #ffffff;
+			padding: 10px;
+			cursor: pointer;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate3d(-50%, -50%, 0);
+    		-webkit-transform: translate3d(-50%, -50%, 0);
+		}
+		.x{
+			width: 100%;
+			height: 30px;
+			font-size: 20px;
+			color: #eee;
+			text-align: right;
+		}
+		.labelspan{
+			width: 150px;
+			line-height: 30px;
+			font-size: 20px;
+			justify-content: center;
+			display: flex;
+			color: #666666;
+		}
+		.left{
+			float: left;
+		}
+		#register-user p{
+			border:1px solid #eeeeee;
+			border-radius: 5px;
+			margin:20px 0px;
+		}
+		#register-user p span{
+			display: inline-block;
+			width: 40px;
+			line-height: 40px;
+			background: #eeeeee;
+			text-align: center;
+		}
+		.iconfont{
+			font-style: normal;
+			font-family: "iconfont";
+			font-size: 25px;
+		}
+		.enter{
+			width: 240px;
+			padding-left: 10px;
+			line-height: 30px;
+			font-size: 14px;
+			border:none;
+			outline: none;
+		}
+		.registerBtn{
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			line-height: 38px;
+			background: #00cc99;
+			color: white;
+			font-size:18px;
+			border:none;
+			cursor: pointer;
+			outline: none;
+		}
+		.active {
+	        animation: move 0.5s;
+	        animation-fill-mode: forwards;
+	    }
+	    .activef{
+	    	animation: turnmove 0.5s;
+	        animation-fill-mode: forwards;
+	    }
+	    @keyframes move{
+	    	0%{	    	
+	    		width: 50%;
+	    		height: 3px;
+	    		background: #00cc99;
+	    		margin-left: 50%;
+	    	}
+	    	100%{
+	    		width: 50%;
+	    		height: 3px;
+	    		background: #00cc99;
+	    	}
+	    }
+	    @keyframes turnmove{
+	    	0%{	    	
+	    		width: 50%;
+	    		height: 3px;
+	    		background: #00cc99;
+	    	}
+	    	100%{
+	    		width: 50%;
+	    		height: 3px;
+	    		background: #00cc99;
+	    		margin-left: 50%;
+	    	}
+	    }
+	</style>
+</head>
+
+<body>
+    <div id="registerContain">
+        <div class="register" v-show="ifshow">
+            <p class="x" @click="show">X</p>
+            <form action="#" method="post">
+                <span class="labelspan left" @click="doregister">登陆</span>
+                <span class="labelspan" @click="zhuce">注册</span>
+                <div class="line" :class='{active:isActive,activef:!isActive}'></div>
+                <div id="register-user">
+                    <p>
+                        <span>
+                            <i class="icon iconfont">&#xe675;</i>
+                        </span>
+                        <input type="text" placeholder="请输入账号" class="enter">
+                    </p>
+                    <p>
+                        <span>
+                            <i class="icon iconfont">&#xe675;</i>
+                        </span>
+                        <input type="text" placeholder="请输入密码" class="enter">
+                    </p>
+                    <button class="registerBtn" v-if="isActive">登陆</button>
+                    <button class="registerBtn" v-if="!isActive">注册</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src='https://cdn.staticfile.org/vue/2.2.2/vue.min.js'></script>
+    <script>
+    new Vue({
+        el: "#registerContain",
+        data: {
+            isActive: false,
+            ifshow: true
+        },
+        methods: {
+            show() {
+                this.ifshow = false
+            },
+            doregister() {
+                this.isActive = true
+            },
+            zhuce() {
+                this.isActive = false
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>
